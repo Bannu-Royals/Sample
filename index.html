@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>
+            Sending data to backend
+        </title>
+    </head>
+    <body>
+        <p>Name:<input id="nm"></p>
+        <p>Age:<input id="ag"></p>
+        <p><button id="bt">Send Data</button></p>
+
+
+        <script>
+            var myName = document.getElementById('nm')
+            var myAge = document.getElementById('ag')
+            var btn = document.getElementById('bt')
+
+            btn.addEventListener("click",()=>{
+                var myObj = {
+                    name:myName.value,
+                    age:myAge.value
+                };  
+                fetch('/api',{
+                    method:"POST",
+                    headers:{
+                      "Content-type":"application/json"
+                    },
+                   body:JSON.stringify(myObj)
+                })
+
+            })
+        </script>
+    </body>
+</html>
